@@ -1,0 +1,41 @@
+#cuerpo form {
+	padding-top: 35px;
+	padding-left: 70px;
+	line-height: 40px;
+	font-weight: 600;
+	font-style: italic;
+}
+
+.form_login input[type=submit]{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.container{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+
+#nombre {
+	width: 300px;
+}
+
+input {
+	background-color: #FEFDF9;
+	border-radius: 10px;
+	margin-top : 10px;
+}
+
+select {
+	background-color: #FEFDF9;
+	border-radius: 10px;
+}
+
+input[type=submit] {
+	background-color: #E2CC23;
+	border-radius: 8px;
+	font-weight: 600;
+	padding: 5px 8px;
+}

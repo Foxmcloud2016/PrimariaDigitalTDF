@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Ingresar
+{% endblock title %}
+
+{% block content %}
+	<h2>Inicio de Sesión</h2>
+	<div class='container'>
+		<form method='POST' class='form_login'>
+		{% csrf_token %}
+		{{ form.as_p }}	
+		<input type="submit" name="form_login" value="Login">
+		</form>	
+	</div>
+	
+{% endblock content %}
+	

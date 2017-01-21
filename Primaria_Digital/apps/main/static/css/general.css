@@ -1,0 +1,183 @@
+body {
+	background-color: #A2D0B6;
+	margin: 0px;
+	padding: 0px;
+	font-family: verdana;
+	background-color: black;
+	background-image: url("../img/vaca.jpg");
+	background-repeat: no-repeat;
+	background-size: 10%;
+	background-attachment: fixed;
+	background-position: right bottom;
+	opacity: 0.98;
+}
+
+#contenedor {
+	width: 960px;
+	margin:auto auto;
+}
+
+#cuerpo {
+	background-image: url("../img/huayra.jpg");
+    background-position: 75% 10%;
+	width: 860px;
+	min-height: 550px;
+	margin-top: 5px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#cuerpo h2 {
+	margin: 0px;
+	font-size: 20px;
+	padding-left: 30px;
+	padding-top: 40px;
+	text-decoration: underline;
+}
+
+#cuerpo ul li {
+	list-style: none;
+	font-weight: bold;
+}
+
+#cuerpo ul a:visited {
+	text-decoration: none;
+	color: #025599;
+}
+
+#cuerpo ul a:link {
+	text-decoration: none;
+	color: #025599;
+}
+
+#cuerpo ul a:hover {
+	text-decoration: none;
+	color: #556E6C;
+}
+
+.acta {
+	line-height: 25px;
+}
+
+footer {
+	background-color: white;
+	width: 860px;
+	margin-top: 5px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#pie {
+	background-image: url("../img/LogoPie.jpg");
+	background-repeat: no-repeat;
+	background-position: 95% 90%;
+	width: 860px;
+	height: 100px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	
+}
+
+footer #pie #logout {
+	padding-left: 20px;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #A3C657;
+	padding: 0px 10px;
+	position: relative;
+	top: 20px;
+	margin-left: 20px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#pie a:visited {
+	text-decoration: none;
+	color: #025599;
+}
+
+#pie a:link {
+	text-decoration: none;
+	color: #025599;
+}
+
+#pie a:hover {
+	text-decoration: none;
+	color: #556E6C;
+}
+
+
+@media handheld, screen and (min-width: 600px) and (max-width:1023px){
+
+header {
+	width: 580px;
+	height: auto;
+}
+
+header #titulo {
+	width: 400px;
+}
+
+header #head {
+	background-position: 55% 1300%;
+}
+/*Contenedor de toda la página*/
+#contenedor {
+	width: 580px;
+}
+#cuerpo {
+	width: 580px;
+	height: auto;
+	background-position: 80% 10%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	display: block;
+}
+footer {
+	width: 580px;
+	height: 100px;
+}
+
+footer #pie{
+	background-position: 40% 90%;
+}
+}
+
+/* Clases Botones */
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+/* Fin de clase Botones */
+
+/* Tablas */
+table {
+			    font-family: arial, sans-serif;
+			    width: 100%;
+					padding: 24px;				
+}
+
+td, th {
+			    border: 1px solid #387273;
+			    text-align: left;
+			    padding: 8px;
+}
+	

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> {% block title %}
+        
+    {% endblock title %} </title>
+
+    {% load static from staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/general.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/header.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/form.css" %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+        
+    {% endblock styles %}
+</head>
+
+
+<body>
+    <section id="contenedor">
+        <header>
+            <div id="head">
+                <div id="titulo">
+                <a href="{% url 'main:home' %}"><h1>Bitacora del Capitan</h1></a>
+                </div>
+            </div>
+        </header>
+
+         <div id='cuerpo'>
+             {% block content %}
+                 
+             {% endblock content %}
+         </div>
+
+         <footer>
+            <div id="pie">
+                <a id="logout" href="{% url 'users:logout' %}">Cerrar sesión</a>  
+            </div>
+        </footer>
+    </section>
+
+
+{% block scripts %}
+    
+{% endblock scripts %}
+</body>
+
+</html>
