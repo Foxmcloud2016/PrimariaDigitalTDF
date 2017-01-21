@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Lista de Colegios
+{% endblock title %}
+
+{% block content %}
+    <h2>Listado de colegios</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cue</th>
+                <th>Domicilio</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for escuela in escuelas %}
+            <tr>
+                <td>{{ escuela.nombre }}</td>
+                <td>{{ escuela.cue }}</td>
+                <td>{{ escuela.domicilio }}</td>
+                <td>{{ escuela.telefono }}</td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+        
+    </table>
+{% endblock content %}
