@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^',include('apps.main.urls',namespace='main')),
     url(r'^',include('apps.users.urls',namespace='users')),
     url(r'^escuelas/',include('apps.escuelas.urls',namespace='escuelas')),
+    url(r'^acciones/',include('apps.acciones.urls',namespace='acciones')),
     url(r'^admin/', admin.site.urls),
 ]

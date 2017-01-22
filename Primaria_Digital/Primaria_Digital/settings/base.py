@@ -17,6 +17,7 @@ LOCAL_APPS = [
     'apps.main',
     'apps.users',
     'apps.escuelas',
+    'apps.acciones',
 ]
 
 THIRD_PARTY_APPS = [

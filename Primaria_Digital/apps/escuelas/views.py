@@ -10,14 +10,14 @@ class EscuelaCreateView(LoginRequiredMixin,CreateView):
     model = Escuela
     template_name = "alta.html"
     form_class = EscuelaForm
-    success_url = reverse_lazy('main:home')
+    success_url = reverse_lazy('escuelas:lista')
     login_url = reverse_lazy('users:login')    
 
 class EscuelaUpdateView(LoginRequiredMixin,UpdateView):
     model = Escuela
-    template_name = "alta.html"
+    template_name = "modificacion.html"
     form_class = EscuelaForm
-    success_url = reverse_lazy('main:home')
+    success_url = reverse_lazy('escuelas:lista')
     login_url = reverse_lazy('users:login')
 
 class ListaEscuelasView(LoginRequiredMixin,TemplateView):

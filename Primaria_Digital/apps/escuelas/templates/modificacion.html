@@ -3,11 +3,13 @@
 {% load static from staticfiles %}
 
 {% block title %}
-    Alta de Escuela
+    Modificacion datos de Escuela {{ form.name.value }}
 {% endblock title %}
 
 {% block content %}
-    <h2>Alta de escuela</h2>
+    
+    <br><br>
+    <h2>Alta de escuela</h2>    
     <form method="POST">
         {% csrf_token %}
         <ul>
@@ -20,7 +22,8 @@
             {% endfor %}    
         
         
-        <li><a class='btnvolver' href="{% url 'escuelas:lista' %} ">Volver</a><input type="submit" value="Dar de alta escuela"></li>
+        <li><a class='btnvolver' href="{% url 'escuelas:lista' %} ">Volver</a><input type="submit" value="Modificar datos de la escuela"></li>
         </ul>
     </form>
+    
 {% endblock content %}
