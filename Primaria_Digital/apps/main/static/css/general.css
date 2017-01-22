@@ -1,9 +1,12 @@
+html{
+	background-image : url("../img/background_image.png");
+}
 body {
-	background-color: #A2D0B6;
+	/*background-color: #A2D0B6;*/
 	margin: 0px;
 	padding: 0px;
 	font-family: verdana;
-	background-color: black;
+	/*background-color: black;*/
 	background-image: url("../img/vaca.jpg");
 	background-repeat: no-repeat;
 	background-size: 10%;
@@ -34,6 +37,13 @@ body {
 	padding-left: 30px;
 	padding-top: 40px;
 	text-decoration: underline;
+}
+
+#cuerpo p{
+	margin: 0px 10px;
+	font-size: 15px;
+	padding-left: 30px;
+	padding-top: 40px;
 }
 
 #cuerpo ul li {
@@ -110,6 +120,13 @@ footer #pie #logout {
 	color: #556E6C;
 }
 
+span.logo{
+	float:left;
+	margin-left:5px;
+	margin-right: 5px;
+	width: 30px;
+	height: 30px;
+}
 
 @media handheld, screen and (min-width: 600px) and (max-width:1023px){
 

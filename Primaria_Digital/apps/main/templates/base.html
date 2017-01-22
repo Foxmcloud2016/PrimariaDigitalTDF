@@ -22,8 +22,9 @@
         <header>
             <div id="head">
                 <div id="titulo">
-                <a href="{% url 'main:home' %}"><h1>Bitacora del Capitan</h1></a>
+                <span class="logo"><img src="{% static "img/logo.png" %} "></span><a href="{% url 'main:home' %}"><h1>Bitacora del Capitan</h1></a>
                 </div>
+                {% include "navbar.html" %}
             </div>
         </header>
 
