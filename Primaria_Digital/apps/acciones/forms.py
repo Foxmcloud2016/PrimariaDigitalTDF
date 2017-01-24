@@ -7,20 +7,17 @@ class AccionForm(forms.ModelForm):
         model = Accion
         fields = ('escuela','accion','fecha',)
         widgets = {
-        'escuela': forms.Textarea(attrs={
+        'escuela': forms.Select(attrs={
             'type':'textarea',
             }),
-
         'accion': forms.Textarea(attrs={
             'type':'textarea',
-            }),
-
-        'fecha': forms.Textarea(attrs={
-            'type':'date',
+            'rows':'4',
+             'cols':'50',
             }),
         }
 
     def clean(self,**kwargs):
-        datos = self.cleaned_data
-        print (datos['fecha'])
-
+        data = super(AccionForm,self).clean(**kwargs)
+        print(data['fecha'])
+        return data

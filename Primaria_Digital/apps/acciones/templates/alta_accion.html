@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    Alta de Accion
+{% endblock title %}
+
+{% block content %}
+    <h2>Alta de Accion</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            
+            {% for field in form %}
+            <li>
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </li>
+            {% endfor %}   
+            <li><input type="hidden" name='usuario_id' value='{{ user.id }}'></li> 
+        
+        
+        <li><a class='btnvolver' href="{% url 'main:home' %} ">Volver</a><input type="submit" value="Ingresar Accion"></li>
+        </ul>
+    </form>
+{% endblock content %}

@@ -10,7 +10,7 @@ class Accion(models.Model):
     accion = models.TextField()
     fecha = models.DateTimeField()
     realizada = models.BooleanField(default=False)
-    comentarios = models.TextField(default=None)
+    comentarios = models.TextField(null=True,default=None)
 
 
     class Meta:
