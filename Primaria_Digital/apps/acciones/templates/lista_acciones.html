@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    Alta de Accion
+{% endblock title %}
+
+{% block content %}
+    <h2>Listado de tus Acciones</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Escuela</th>
+                <th>Accion</th>
+                <th>Fecha</th>
+                <th>¿Realizada?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for accion in acciones %}
+             <tr>
+                <td>{{ accion.escuela.nombre }}</td>
+                <td>{{ accion.accion }}</td>
+                <td>{{ accion.fecha }}</td>
+                <td>{{ accion.realizada }}</td>
+            </tr>     
+            {% endfor %}
+        </tbody>
+        
+    </table>
+{% endblock content %}
