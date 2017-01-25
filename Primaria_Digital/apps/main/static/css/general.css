@@ -210,14 +210,27 @@ footer #pie{
 
 /* Tablas */
 table {
-			    font-family: arial, sans-serif;
-			    width: 100%;
-					padding: 24px;				
+    font-family: arial, sans-serif;
+    width: 100%;
+		padding: 24px;				
 }
 
 td, th {
-			    border: 1px solid #387273;
-			    text-align: left;
-			    padding: 8px;
+    border: 1px solid #387273;
+    text-align: left;
+    padding: 8px;
 }
 	
+
+/* Colores Iconos */
+
+.icon-cross{
+	color: #db0202;
+}
+
+.icon-checkmark{
+	color: #319631;
+}
+
+
+

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% load static from staticfiles %}
-
 {% block title %}
     Alta de Accion
 {% endblock title %}
@@ -23,7 +22,11 @@
                 <td>{{ accion.escuela.nombre }}</td>
                 <td>{{ accion.accion }}</td>
                 <td>{{ accion.fecha }}</td>
-                <td>{{ accion.realizada }}</td>
+                {% if accion.realizada %}
+                    <td style="text-align: center"><span class="icon-checkmark"></span></td>    
+                {% else %}
+                    <td style="text-align: center"><span class="icon-cross"></span></td>
+                {% endif %}
             </tr>     
             {% endfor %}
         </tbody>
