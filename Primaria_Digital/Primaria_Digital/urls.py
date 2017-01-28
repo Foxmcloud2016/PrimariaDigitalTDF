@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^usuarios/',include('apps.users.urls',namespace='users')),
     url(r'^escuelas/',include('apps.escuelas.urls',namespace='escuelas')),
     url(r'^acciones/',include('apps.acciones.urls',namespace='acciones')),
+    url(r'^dispositivos/',include('apps.dispositivos.urls',namespace='dispositivos')),
     url(r'^admin/', admin.site.urls),
 ]

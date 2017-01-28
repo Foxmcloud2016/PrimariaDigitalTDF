@@ -1,0 +1,144 @@
+{% if adm %}
+
+    <div id="data">
+        
+        <a style='margin: 30px 30px' class="actualizarbtn" href="#">Añadir Dispositivo nuevo</a>
+        <div class="container">
+            <div class="panel">
+            {% if servidor %}
+                <div class="panel-header">Servidor</div>
+                <div class="panel-body">
+                    <div class='content'>Marca: {{ servidor.marca }} </div>
+                    <div class='content'>Modelo: {{ servidor.modelo }} </div>
+                    <div class='content'>N°S: {{ servidor.n_s }} </div>
+                    {% if servidor.estado == 1 %}
+                        <div class='content'>Estado: Buen Estado</div>
+                    {% elif servidor.estado == 2 %}
+                        <div class='content'>Estado: En espera de Servicio Tecnico</div>
+                    {% else %}
+                        <div class='content'>Estado: Roto</div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="panel-header">Servidor</div>
+                <div class="panel-body">
+                    <div class='content'>No se encuentra un servidor registrado</div>
+                </div>
+            {% endif %}
+
+            </div>
+            <div class="panel">
+            {% if canon %}
+                <div class="panel-header">Cañon</div>
+                <div class="panel-body">
+                    <div class='content'>Marca: {{ canon.marca }}</div>
+                    <div class='content'>Modelo: {{ canon.modelo }}</div>
+                    <div class='content'>N°S:{{ canon.n_s }}</div>
+                    {% if canon.estado == 1 %}
+                        <div class='content'>Estado: Buen Estado</div>
+                    {% elif canon.estado == 2 %}
+                        <div class='content'>Estado: En espera de Servicio Tecnico</div>
+                    {% else %}
+                        <div class='content'>Estado: Roto</div>
+                    {% endif %}
+                    
+                </div>
+            {% else %}
+                <div class="panel-header">Cañon</div>
+                <div class="panel-body">
+                    <div class='content'>No se encuentra un cañon registrado</div>
+                </div>
+            {% endif %}
+
+            </div>
+        <div class="container">
+            <div class="panel">
+            {% if impresora %}
+                <div class="panel-header">Impresora</div>
+                <div class="panel-body">
+                    <div class='content'>Marca: {{ impresora.marca }}</div>
+                    <div class='content'>Modelo: {{ impresora.modelo }}</div>
+                    <div class='content'>N°S: {{ impresora.n_s }}</div>
+                    {% if impresora.estado == 1 %}
+                        <div class='content'>Estado: Buen Estado</div>
+                    {% elif impresora.estado == 2 %}
+                        <div class='content'>Estado: En espera de Servicio Tecnico</div>
+                    {% else %}
+                        <div class='content'>Estado: Roto</div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="panel-header">Impresora</div>
+                <div class="panel-body">
+                    <div class='content'>No se encuentra una impresora registrada</div>
+                </div>
+            {% endif %}
+
+            </div>
+            <div class="panel">
+            {% if camara %}
+                <div class="panel-header">Camara</div>
+                <div class="panel-body">
+                    <div class='content'>Marca: {{ camara.marca }} </div>
+                    <div class='content'>Modelo:{{ camara.modelo }} </div>
+                    <div class='content'>N°S:{{ camara.n_s }}</div>
+                    {% if camara.estado == 1 %}
+                        <div class='content'>Estado: Buen Estado</div>
+                    {% elif camara.estado == 2 %}
+                        <div class='content'>Estado: En espera de Servicio Tecnico</div>
+                    {% else %}
+                        <div class='content'>Estado: Roto</div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="panel-header">Camara</div>
+                <div class="panel-body">
+                    <div class='content'>No se encuentra una camara registrada</div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+        {% if netbooks %}
+            <table class="netbooks">
+            <thead class="table-header">
+                <tr>
+                    <th class="row-id" style="padding:5px">#</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>N° de serie</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-body">
+                
+                    {% for netbook in netbooks %}
+                    <tr>
+                    <td class="row-id" style="padding:5px">{{ netbook.n_m }}</td>
+                    <td>{{ netbook.modelo }}</td>
+                    <td>{{ netbook.marca }}</td>
+                    <td>{{ netbook.n_s }}</td>
+                    {% if netbook.estado == 1 %}
+                        <td>Buen Estado</td>
+                    {% elif netbook.estado == 2 %}
+                        <td>Espera de servicio tecnico</td>
+                    {% else %}
+                        <td>Roto</td>
+                    {% endif %}
+                    <td></td>
+                    </tr>    
+                    {% endfor %}
+                    
+            </tbody>
+            </table>
+        </div>    
+        {% else %}
+            <br><br><br><br> <p>no se encuentran netbooks</p>    
+        {% endif %}
+                
+{% else %}
+    <form>
+        <p>La escuela seleccionada no tiene un adm registrado , ¿Desea registrarla?</p>
+    </form>
+{% endif %}
+

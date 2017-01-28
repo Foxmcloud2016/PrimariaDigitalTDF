@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    Listado de Dispositivos por Escuela
+{% endblock title %}
+
+{% block content %}
+    <h2>Listado de Dispositivos por Escuela</h2>
+    
+    <select class="select-dispo" id="escuela">
+        <option value='0'>Elija una escuela</option>
+        {% for escuela in escuelas %}
+            <option value="{{ escuela.id }}">{{ escuela.nombre }}</option>
+        {% endfor %}
+    </select>
+    <div id="log">
+        
+    </div>
+    
+{% endblock content %}
+
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        
+        $("#escuela").change(function() {
+            $("#log").hide()
+            var id_escuela = $("#escuela").val()
+            $.ajax({
+                data : { 'id_escuela' : id_escuela},
+                method : 'GET',
+                url : '{% url "dispositivos:listado_disp" %}',
+                datatype : 'json',
+                success: function(data){
+                    console.log(data['html'])
+                    $('#log').html(data['html'])
+                    $("#log").show()
+                }
+            })
+
+            })
+;
+    </script>
+{% endblock scripts %}

@@ -18,6 +18,7 @@ LOCAL_APPS = [
     'apps.users',
     'apps.escuelas',
     'apps.acciones',
+    'apps.dispositivos',
 ]
 
 THIRD_PARTY_APPS = [

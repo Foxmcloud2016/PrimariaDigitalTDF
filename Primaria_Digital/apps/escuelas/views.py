@@ -11,7 +11,7 @@ class EscuelaCreateView(LoginRequiredMixin,CreateView):
     template_name = "alta.html"
     form_class = EscuelaForm
     success_url = reverse_lazy('escuelas:lista')
-    login_url = reverse_lazy('users:login')    
+    login_url = reverse_lazy('users:login')
 
 class EscuelaUpdateView(LoginRequiredMixin,UpdateView):
     model = Escuela
@@ -27,4 +27,5 @@ class ListaEscuelasView(LoginRequiredMixin,TemplateView):
     def get_context_data(self,**kwargs):
         context = super(ListaEscuelasView,self).get_context_data(**kwargs)
         context['escuelas'] = Escuela.objects.all()
+        print(context['escuelas'])
         return context

@@ -5,7 +5,7 @@ body {
 	/*background-color: #A2D0B6;*/
 	margin: 0px;
 	padding: 0px;
-	font-family: verdana;
+	font-family: 'Averia Libre', cursive;
 	/*background-color: black;*/
 	background-image: url("../img/vaca.jpg");
 	background-repeat: no-repeat;
@@ -215,10 +215,30 @@ table {
 		padding: 24px;				
 }
 
+.table-header{
+	border-top-right-radius: 2em;
+	border-top-left-radius: 2em;
+	text-align: center;
+	padding-top:15px;
+	background-color :#E2CC23;
+}
+
+.table-body{
+	background-color :#48d3d6;
+	border-bottom-right-radius: 2em;
+	border-bottom-left-radius: 2em;
+}
+
 td, th {
-    border: 1px solid #387273;
+    /*border: 1px solid #387273;*/
     text-align: left;
     padding: 8px;
+    font-family: 'Averia Libre', cursive;
+}
+
+.row-id{
+	width : 10px;
+	padding:2px;
 }
 	
 
@@ -232,5 +252,46 @@ td, th {
 	color: #319631;
 }
 
+/*Paneles*/
+.panel{
+	margin-left : 40px;
+	margin-top : 30px;
+	float: left;
+}
 
+.panel-header{
+	border-top-right-radius: 2em;
+	border-top-left-radius: 2em;
+	text-align: center;
+	padding-top:15px;
+	width:360px;
+	height:50px;
+	background-color :#E2CC23;
+	font-family: 'Averia Libre', cursive;
+}
 
+.panel-body{
+	background-color : #48d3d6;
+	width:360px;
+	height:200px;
+	border-bottom-right-radius: 2em;
+	border-bottom-left-radius: 2em;
+}
+/*Fin paneles*/
+
+/*Contenido*/
+.content {
+	padding-left: 20px;
+	padding-top: 20px;
+	font-style: italic;
+	font-family: 'Averia Libre', cursive;
+}
+
+/*Select de la pagina lista_dispositivos.html*/
+.select-dispo{
+	border-radius: 10px;
+	margin: 35px 35px;
+	line-height: 40px;
+	font-weight: 600;
+	font-style: italic;
+}
