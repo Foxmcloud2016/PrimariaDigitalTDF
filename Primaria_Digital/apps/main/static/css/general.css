@@ -24,7 +24,7 @@ body {
 	background-image: url("../img/huayra.jpg");
     background-position: 75% 10%;
 	width: 860px;
-	min-height: 550px;
+	min-height: 800px;
 	margin-top: 5px;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
@@ -212,7 +212,7 @@ footer #pie{
 table {
     font-family: arial, sans-serif;
     width: 100%;
-		padding: 24px;				
+	padding: 24px;				
 }
 
 .table-header{
@@ -276,6 +276,17 @@ td, th {
 	height:200px;
 	border-bottom-right-radius: 2em;
 	border-bottom-left-radius: 2em;
+}
+
+.panel-mensaje{
+	border-top-right-radius: 2em;
+	border-top-left-radius: 2em;
+	text-align: center;
+	width: 30px;
+	height:50px;
+	background-color :#E2CC23;
+	font-family: 'Averia Libre', cursive;	
+
 }
 /*Fin paneles*/
 

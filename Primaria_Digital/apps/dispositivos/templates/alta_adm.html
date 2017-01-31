@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    Alta de ADM
+{% endblock title %}
+
+{% block content %}
+    <h2>Alta de ADM Escolar</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for field in form %}
+            <li>
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </li>
+            {% endfor %}    
+        
+        
+        <li><a class='btnvolver' href="#">Volver</a><input type="submit" value="Dar de alta ADM"></li>
+        </ul>
+    </form>
+{% endblock content %}

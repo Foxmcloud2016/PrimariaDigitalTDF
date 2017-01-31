@@ -1,8 +1,9 @@
 {% if adm %}
 
     <div id="data">
-        
+
         <a style='margin: 30px 30px' class="actualizarbtn" href="#">Añadir Dispositivo nuevo</a>
+        
         <div class="container">
             <div class="panel">
             {% if servidor %}
@@ -51,7 +52,7 @@
             {% endif %}
 
             </div>
-        <div class="container">
+        </div>
             <div class="panel">
             {% if impresora %}
                 <div class="panel-header">Impresora</div>
@@ -97,48 +98,87 @@
                 </div>
             {% endif %}
             </div>
-        </div>
+
         {% if netbooks %}
             <table class="netbooks">
-            <thead class="table-header">
-                <tr>
-                    <th class="row-id" style="padding:5px">#</th>
-                    <th>Modelo</th>
-                    <th>Marca</th>
-                    <th>N° de serie</th>
-                    <th>Estado</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody class="table-body">
-                
-                    {% for netbook in netbooks %}
+                <thead class="table-header">
                     <tr>
-                    <td class="row-id" style="padding:5px">{{ netbook.n_m }}</td>
-                    <td>{{ netbook.modelo }}</td>
-                    <td>{{ netbook.marca }}</td>
-                    <td>{{ netbook.n_s }}</td>
-                    {% if netbook.estado == 1 %}
-                        <td>Buen Estado</td>
-                    {% elif netbook.estado == 2 %}
-                        <td>Espera de servicio tecnico</td>
-                    {% else %}
-                        <td>Roto</td>
-                    {% endif %}
-                    <td></td>
-                    </tr>    
-                    {% endfor %}
+                        <th class="row-id" style="padding:5px">#</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>N° de serie</th>
+                        <th>Estado</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
                     
-            </tbody>
+                        {% for netbook in netbooks %}
+                        <tr>
+                        <td class="row-id" style="padding:5px">{{ netbook.n_m }}</td>
+                        <td>{{ netbook.modelo }}</td>
+                        <td>{{ netbook.marca }}</td>
+                        <td>{{ netbook.n_s }}</td>
+                        {% if netbook.estado == 1 %}
+                            <td>Buen Estado</td>
+                        {% elif netbook.estado == 2 %}
+                            <td>Espera de servicio tecnico</td>
+                        {% else %}
+                            <td>Roto</td>
+                        {% endif %}
+                        <td></td>
+                        </tr>    
+                        {% endfor %}
+                        
+                </tbody>
             </table>
-        </div>    
-        {% else %}
-            <br><br><br><br> <p>no se encuentran netbooks</p>    
+            {% else %}
+            
         {% endif %}
+    </div>    
+        
                 
 {% else %}
     <form>
-        <p>La escuela seleccionada no tiene un adm registrado , ¿Desea registrarla?</p>
+    <ul>
+        <li>
+            <p>La escuela seleccionada no tiene un adm registrado , ¿Desea registrarla?</p>
+        </li>
+        <li>
+            <label for='#anio_recepcion'>Elija el año de recepcion</label>
+            <select class='select-dispo' id='anio_recepcion'>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+            </select>
+        </li>
+        <li>
+            <button onclick="AltaAdm()" class='actualizarbtn'>Dar de alta ADM</button>
+        </li>
+    </ul>    
     </form>
+    <script type="text/javascript">
+    function AltaAdm(){
+        var id_escuela = $("#escuela").val();
+        var anio_recepcion = $("#anio_recepcion").val();
+        $.ajax({
+
+                data : { 'id_escuela' : id_escuela,
+                         'anio_recepcion' : anio_recepcion},
+                method : 'GET',
+                url : '{% url "dispositivos:alta_adm" %}',
+                datatype : 'json',
+                success: function(data){
+                    console.log(data)
+                    mostrardatos()
+                }
+            })
+
+    };
+    </script>
 {% endif %}
 

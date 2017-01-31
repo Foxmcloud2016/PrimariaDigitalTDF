@@ -26,7 +26,9 @@
     {{ block.super }}
     <script type="text/javascript">
         
-        $("#escuela").change(function() {
+        $("#escuela").change(mostrardatos);
+
+        function mostrardatos() {
             $("#log").hide()
             var id_escuela = $("#escuela").val()
             $.ajax({
@@ -37,11 +39,10 @@
                 success: function(data){
                     console.log(data['html'])
                     $('#log').html(data['html'])
-                    $("#log").show()
+                    $("#log").fadeIn("slow");
                 }
             })
 
-            })
-;
+            };
     </script>
 {% endblock scripts %}

@@ -1,11 +1,30 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, View
+from django.views.generic import TemplateView, View, CreateView
 from apps.escuelas.models import Escuela
 from .models import Adm , Dispositivo
 from django.http import JsonResponse
 from django.core import serializers
+from django.core.urlresolvers import reverse_lazy
 from django.template.loader import render_to_string
 # Create your views here.
+
+
+### VIEW ADM
+
+class CreateAdm(View):
+
+    def get(self,request,*args,**kwargs):
+        id_escuela = request.GET['id_escuela']
+        anio = '{}-01-01'.format(request.GET['anio_recepcion'])
+        escuela = Escuela.objects.get(id = id_escuela)
+        adm = Adm.objects.create(
+            escuela = escuela,
+            anio_recepcion = anio)
+        adm.save()
+        mensaje = {'exito': '¡Adm agregado con exito!'}
+        return JsonResponse(mensaje)
+
+### VIEW DISPOSITIVOS
 
 class DispositivosView(TemplateView):
     template_name = "lista_dispositivos.html"
