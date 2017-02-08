@@ -1,9 +1,5 @@
 from .base import *
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -12,3 +8,9 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+DEBUG = False

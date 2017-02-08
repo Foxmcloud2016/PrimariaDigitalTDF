@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    Alta de Dispositivo
+{% endblock title %}
+
+{% block content %}
+    {% if n_tipo == '1' %}
+        <h2>Alta de Servidor</h2> 
+    {% elif n_tipo == '2' %}
+        <h2>Alta de Cañon</h2>        
+    {% elif n_tipo == '3' %}
+        <h2>Alta de Impresora</h2>        
+    {% else %}
+        <h2>Alta de Camara</h2>        
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <ul>
+            {% for field in form %}
+            {% if field.name == 'adm' %}
+                {{ field }}
+            {% elif field.name == 'tipo' %}
+                {{ field }}
+            {% elif field.name == 'n_m' %}
+                {{ field }}
+            {% else %}
+                <li>
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+                </li>
+            {% endif %}
+            
+            {% endfor %}    
+        
+        
+        <li><a class='btnvolver' href="{% url 'dispositivos:lista' %}">Volver</a><input type="submit" value="Dar de alta Dispositivo"></li>
+        </ul>
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        var idAdm = {{ adm.id }};
+        var n_tipo = {{ n_tipo }};
+        var n_m = (idAdm * 100) + n_tipo;
+        $('#id_adm').val(idAdm);
+        $('#id_tipo').val(n_tipo);
+        $('#id_n_m').val(n_m);
+    </script>
+    
+{% endblock scripts %}

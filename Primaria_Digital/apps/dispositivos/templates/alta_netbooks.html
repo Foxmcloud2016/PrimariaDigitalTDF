@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block title %}
+    Alta de Dispositivo
+{% endblock title %}
+
+{% block content %}
+    <h2>Alta de Netbooks</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <ul>
+
+            {% for forms in form %}
+                {% for field in forms %}
+                {% if field.is_hidden %}
+                    {% if field.name == 'adm' %}
+                        <input type="hidden" name="adm" value="{{ adm.id }}">
+                    {% endif %}
+                    {{ field }}
+                {% else %}
+                    <li>
+                    <label for= {{ field.id }} > N° de Serie</label>
+                    {{ field }}
+                    {{ field.errors }}
+                    </li>
+                {% endif %}    
+                {% endfor %}
+                
+            {% endfor %}
+        
+        <li><a class='btnvolver' href="{% url 'dispositivos:lista' %}">Volver</a><input type="submit" value="Dar de alta Dispositivo"></li>
+        </ul>
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+        var idAdm = {{ adm.id }};
+        var n_tipo = {{ n_tipo }};
+        $('#id_adm').val(idAdm);
+        $('#id_tipo').val(n_tipo);
+    </script>
+    
+{% endblock scripts %}

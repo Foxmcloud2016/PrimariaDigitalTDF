@@ -13,7 +13,7 @@ class Adm(models.Model):
         verbose_name_plural = "Adms"
 
     def __str__(self):
-        return "{} - {}".format(self.escuela,self.anio_recepcion)
+        return "{} - {}".format(self.escuela.nombre,self.anio_recepcion)
 
 
 class Servidor(models.Manager):
@@ -23,11 +23,11 @@ class Dispositivo(models.Model):
 
     adm = models.ForeignKey(Adm)
     tipo = models.IntegerField()
-    estado = models.IntegerField()
-    n_m = models.IntegerField()
+    estado = models.IntegerField(default=1)
+    n_m = models.IntegerField(null=True)
     marca = models.CharField(max_length=50)
     modelo = models.CharField(max_length=50)
-    n_s = models.CharField(max_length=50)
+    n_s = models.CharField(max_length=50,unique=True)
 
     class Meta:
         verbose_name = "Dispositivo"
@@ -47,4 +47,3 @@ class Dispositivo(models.Model):
             return "Camara"
         if tipo == 5:
             return "Netbook"
-

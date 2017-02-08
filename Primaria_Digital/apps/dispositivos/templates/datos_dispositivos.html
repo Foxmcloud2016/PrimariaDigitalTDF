@@ -1,9 +1,6 @@
 {% if adm %}
 
     <div id="data">
-
-        <a style='margin: 30px 30px' class="actualizarbtn" href="#">Añadir Dispositivo nuevo</a>
-        
         <div class="container">
             <div class="panel">
             {% if servidor %}
@@ -24,6 +21,8 @@
                 <div class="panel-header">Servidor</div>
                 <div class="panel-body">
                     <div class='content'>No se encuentra un servidor registrado</div>
+                    <div class="content">¿Desea ingresar un servidor a este ADM?</div>
+                    <div class="content"><a class="actualizarbtn" href="{% url 'dispositivos:alta_dispositivo' adm_id.id '1' %}">Añadir Servidor</a></div>
                 </div>
             {% endif %}
 
@@ -48,6 +47,9 @@
                 <div class="panel-header">Cañon</div>
                 <div class="panel-body">
                     <div class='content'>No se encuentra un cañon registrado</div>
+                    <div class="content">¿Desea ingresar un Cañon a este ADM?</div>
+                    <div class="content"><a class="actualizarbtn" href="{% url 'dispositivos:alta_dispositivo' adm_id.id '2' %}">Añadir Cañon</a></div>
+                </div>
                 </div>
             {% endif %}
 
@@ -72,6 +74,9 @@
                 <div class="panel-header">Impresora</div>
                 <div class="panel-body">
                     <div class='content'>No se encuentra una impresora registrada</div>
+                    <div class="content">¿Desea ingresar un Impresora a este ADM?</div>
+                    <div class="content"><a class="actualizarbtn" href="{% url 'dispositivos:alta_dispositivo' adm_id.id '3' %}">Añadir Impresora</a></div>
+                </div>
                 </div>
             {% endif %}
 
@@ -95,9 +100,14 @@
                 <div class="panel-header">Camara</div>
                 <div class="panel-body">
                     <div class='content'>No se encuentra una camara registrada</div>
+                    <div class="content">¿Desea ingresar un Camara a este ADM?</div>
+                    <div class="content"><a class="actualizarbtn" href="{% url 'dispositivos:alta_dispositivo' adm_id.id '4' %}">Añadir Camara</a></div>
+                </div>
                 </div>
             {% endif %}
             </div>
+
+            <a class="actualizarbtn" style='margin: 60px 30px' href="{% url 'dispositivos:alta_dispositivo' adm_id.id '5' %}">Añadir Netbook</a>
 
         {% if netbooks %}
             <table class="netbooks">
