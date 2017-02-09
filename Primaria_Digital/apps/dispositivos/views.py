@@ -6,8 +6,8 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.core.urlresolvers import reverse_lazy,reverse
 from django.template.loader import render_to_string
-from .forms import DispositivoUnicoForm, NetbooksForm
-from django.forms import formset_factory
+from .forms import DispositivoUnicoForm,NetbookMasiveForm
+
 # Create your views here.
 
 
@@ -35,6 +35,34 @@ class DispositivoCreateView(FormView):
     def form_valid(self,form):
         form.save()
         return super(DispositivoCreateView,self).form_valid(form)
+
+class NetbookFormMassiveView(FormView):
+    model = Dispositivo
+    template_name = "alta_netbooks.html"
+    form_class = NetbookMasiveForm
+    success_url = reverse_lazy('dispositivos:lista')
+
+    def get(self,request,*args,**kwargs):
+        context = super(NetbookFormMassiveView,self).get_context_data(**kwargs)
+        context['adm'] = Adm.objects.get(id=context['id_adm'])
+        self.id_adm = context['id_adm']
+        return render(request,self.template_name,context)
+
+    def form_valid(self,form):
+        form_content = form.cleaned_data
+        modelo = form_content.pop('modelo')
+        marca = form_content.pop('marca')
+        adm = Adm.objects.get(id=form_content.pop('adm'))
+        index = 1
+        try:
+            for netbook in form_content.values():
+                Dispositivo.objects.create(adm = adm,tipo = 5,n_m = index,
+                marca = marca,modelo = modelo,n_s = netbook)
+                index += 1
+        except IntegrityError:
+            super(NetbookFormMassiveView,self).form_invalid(form)
+        return super(NetbookFormMassiveView,self).form_valid(form)
+
 """
 class NetbookCreateView(FormView):
     model = Dispositivo
@@ -106,7 +134,6 @@ class EscuelaDispositivosView(View):
             context['adm'] = False
         else:
             adm = Adm.objects.get(escuela = escuela_elegida)
-            print(adm)
             context['adm'] = True
             if Dispositivo.objects.filter(adm = adm , tipo = 1).exists():
                 context['servidor'] = Dispositivo.objects.get(adm = adm , tipo = 1)
@@ -126,7 +153,6 @@ class EscuelaDispositivosView(View):
                 context['canon'] = False
             context['netbooks'] = Dispositivo.objects.filter(adm = adm , tipo = 5).order_by('n_m')
             context['adm_id'] = adm
-            print(context['servidor'])
 
 
         html = (render_to_string('datos_dispositivos.html',context))

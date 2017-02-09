@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from apps.main import views
+from apps.main.views import HomeView
 
 urlpatterns = [
-    #url(r'^$', views.home),
-    url(r'^',include('apps.main.urls',namespace='main')),
-    url(r'^usuarios/',include('apps.users.urls',namespace='users')),
-    url(r'^escuelas/',include('apps.escuelas.urls',namespace='escuelas')),
-    url(r'^acciones/',include('apps.acciones.urls',namespace='acciones')),
-    url(r'^dispositivos/',include('apps.dispositivos.urls',namespace='dispositivos')),
+    #   url(r'^$', views.home),
+    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^usuarios/', include('apps.users.urls', namespace='users')),
+    url(r'^escuelas/', include('apps.escuelas.urls', namespace='escuelas')),
+    url(r'^acciones/', include('apps.acciones.urls', namespace='acciones')),
+    url(r'^dispositivos/', include('apps.dispositivos.urls', namespace='dispositivos')),
     url(r'^admin/', admin.site.urls),
 ]

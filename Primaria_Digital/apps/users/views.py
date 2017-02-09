@@ -7,7 +7,7 @@ from django.contrib.auth import login,authenticate,logout
 class RegisterView(FormView):
     template_name = "register.html"
     form_class = RegisterForm
-    success_url = reverse_lazy('main:home')
+    success_url = reverse_lazy('home')
 
     def form_valid(self,form):
         user = form.save()
@@ -19,7 +19,7 @@ class RegisterView(FormView):
 class LoginView(FormView):
     template_name = "login.html"
     form_class = LoginForm
-    success_url = reverse_lazy('main:home')
+    success_url = reverse_lazy('home')
 
     def form_valid(self,form):
         user = authenticate(
@@ -33,6 +33,4 @@ class LogoutView(View):
     
     def get(self, request, *args, **kwargs):
         logout(request)
-        return redirect(reverse('main:home'))
-
-
+        return redirect(reverse('home'))
