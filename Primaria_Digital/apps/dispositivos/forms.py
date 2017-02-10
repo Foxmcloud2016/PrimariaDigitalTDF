@@ -36,7 +36,31 @@ class DispositivoUnicoForm(forms.ModelForm):
         else:
             return n_m
 
+class NetbookForm(forms.ModelForm):
+    class Meta:
+        model = Dispositivo
+        fields = ('adm','estado', 'tipo', 'n_m', 'marca', 'modelo', 'n_s')
+        widgets = {
+            'adm': forms.TextInput(attrs={
+                'type': 'hidden'
+            }),
+            'tipo': forms.TextInput(attrs={
+                'type': 'hidden'
+            }),
+            'estado': forms.TextInput(attrs={
+                'type': 'hidden'
+            }),
+        }
 
+    def clean_n_m(self):
+        adm = self.cleaned_data['adm']
+        n_m = self.cleaned_data['n_m']
+        if Dispositivo.objects.filter(adm=adm, n_m=n_m).exists():
+            raise forms.ValidationError(
+                'El numero de maquina ingresado ya existe en el adm')
+        else:
+            return n_m
+"""
 class NetbookMasiveForm(forms.Form):
     adm = forms.CharField(widget=forms.TextInput(attrs={'type': 'hidden'}))
     marca = forms.CharField(max_length=30)
@@ -90,3 +114,4 @@ class NetbookMasiveForm(forms.Form):
                     return self.cleaned_data
         else:
             raise forms.ValidationError('Numero de serie ingresado duplicado')
+"""

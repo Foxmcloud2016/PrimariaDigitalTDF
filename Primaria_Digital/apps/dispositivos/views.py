@@ -6,7 +6,8 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.core.urlresolvers import reverse_lazy,reverse
 from django.template.loader import render_to_string
-from .forms import DispositivoUnicoForm,NetbookMasiveForm
+from .forms import DispositivoUnicoForm,NetbookForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -19,23 +20,42 @@ TIPOS_DISPOSITIVO = {
     'camara' : 4,
 }
 
-class DispositivoCreateView(FormView):
+class DispositivoCreateView(LoginRequiredMixin,FormView):
     model = Dispositivo
     template_name = "alta_dispositivo.html"
     form_class = DispositivoUnicoForm
     success_url = reverse_lazy('dispositivos:lista')
+    login_url = reverse_lazy('users:login')
 
     def get(self,request,*args,**kwargs):
         context = super(DispositivoCreateView,self).get_context_data(**kwargs)
         context['adm'] = Adm.objects.get(id=context['id_adm'])
         self.id_adm = context['id_adm']
-        print(context['n_tipo'])
         return render(request,self.template_name,context)
 
     def form_valid(self,form):
         form.save()
         return super(DispositivoCreateView,self).form_valid(form)
 
+class NetbookCreateView(LoginRequiredMixin,FormView):
+    model = Dispositivo
+    template_name = "alta_netbooks.html"
+    form_class = NetbookForm
+    success_url = reverse_lazy('dispositivos:lista')
+    login_url = reverse_lazy('users:login')
+
+    def get(self,request,*args,**kwargs):
+        context = super(NetbookCreateView,self).get_context_data(**kwargs)
+        context['adm'] = Adm.objects.get(id=context['id_adm'])
+        self.id_adm = context['id_adm']
+        print(context['adm'])
+        return render(request,self.template_name,context)
+
+    def form_valid(self,form):
+        form.save()
+        return super(NetbookCreateView,self).form_valid(form)
+
+"""
 class NetbookFormMassiveView(FormView):
     model = Dispositivo
     template_name = "alta_netbooks.html"
@@ -62,46 +82,10 @@ class NetbookFormMassiveView(FormView):
         except IntegrityError:
             super(NetbookFormMassiveView,self).form_invalid(form)
         return super(NetbookFormMassiveView,self).form_valid(form)
-
 """
-class NetbookCreateView(FormView):
-    model = Dispositivo
-    template_name = "alta_netbooks.html"
-    form_class = formset_factory(NetbooksForm,extra=2)
-    success_url = reverse_lazy('dispositivos:lista')
+class CreateAdm(LoginRequiredMixin,View):
 
-    def get(self,request,*args,**kwargs):
-        context = super(NetbookCreateView,self).get_context_data(**kwargs)
-        context['adm'] = Adm.objects.get(id=context['id_adm'])
-        formset = context['form']
-        print("Este es", self.form_class)
-        formset = self.form_class(initial=[{
-                'marca':'marca',
-                'modelo':'modelo',
-            }
-            ])
-        context['form'] = formset
-        self.id_adm = context['id_adm']
-        return render(request,self.template_name,context)
-
-    def form_valid(self,form):
-        print(form.is_valid())
-        return super(NetbookCreateView,self).form_valid(form)
-
-"""
-"""
-class DispositivoCreateView(CreateView):
-    model = Dispositivo
-    template_name = "alta_dispositivo.html"
-    form_class = DispositivoUnicoForm
-    success_url = reverse_lazy('dispositivos:lista')
-
-    def get(self,request,*args,**kwargs):
-        print(request.GET['id_adm'])
-"""
-### VIEW ADM
-
-class CreateAdm(View):
+    login_url = reverse_lazy('users:login')
 
     def get(self,request,*args,**kwargs):
         id_escuela = request.GET['id_escuela']
@@ -117,15 +101,18 @@ class CreateAdm(View):
 
 ### VIEW DISPOSITIVOS
 
-class DispositivosView(TemplateView):
+class DispositivosView(LoginRequiredMixin,TemplateView):
     template_name = "lista_dispositivos.html"
+    login_url = reverse_lazy('users:login')
 
     def get_context_data(self,**kwargs):
         context = super(DispositivosView,self).get_context_data(**kwargs)
         context['escuelas'] = Escuela.objects.all()
         return context
 
-class EscuelaDispositivosView(View):
+class EscuelaDispositivosView(LoginRequiredMixin,View):
+
+    login_url = reverse_lazy('users:login')
 
     def get(self,request,*args,**kwargs):
         escuela_elegida = Escuela.objects.get(id = request.GET['id_escuela'])
