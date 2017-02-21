@@ -8,6 +8,8 @@ class Escuela(models.Model):
     cue = models.IntegerField()
     domicilio = models.CharField(max_length=80)
     telefono = models.CharField(max_length=50)
+    directivo = models.CharField(max_length=50)
+    tel_directivo = models.CharField(max_length=50)
 
     class Meta:
         verbose_name = "Escuela"

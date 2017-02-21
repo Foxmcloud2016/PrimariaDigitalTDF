@@ -106,6 +106,56 @@
                 </div>
             {% endif %}
             </div>
+            <div class="panel">
+            {% if monitor %}
+                <div class="panel-header">Monitor</div>
+                <div class="panel-body">
+                    <div class='content'>Marca: {{ monitor.marca }} </div>
+                    <div class='content'>Modelo:{{ monitor.modelo }} </div>
+                    <div class='content'>N°S:{{ monitor.n_s }}</div>
+                    {% if monitor.estado == 1 %}
+                        <div class='content'>Estado: Buen Estado</div>
+                    {% elif monitor.estado == 2 %}
+                        <div class='content'>Estado: En espera de Servicio Tecnico</div>
+                    {% else %}
+                        <div class='content'>Estado: Roto</div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="panel-header">Monitor</div>
+                <div class="panel-body">
+                    <div class='content'>No se encuentra una monitor registrada</div>
+                    <div class="content">¿Desea ingresar un monitor a este ADM?</div>
+                    <div class="content"><a class="actualizarbtn" href="{% url 'dispositivos:alta_dispositivo' adm_id.id '6' %}">Añadir monitor</a></div>
+                </div>
+                </div>
+            {% endif %}
+            </div>
+            <div class="panel">
+            {% if pizarra %}
+                <div class="panel-header">Pizarra</div>
+                <div class="panel-body">
+                    <div class='content'>Marca: {{ pizarra.marca }} </div>
+                    <div class='content'>Modelo:{{ pizarra.modelo }} </div>
+                    <div class='content'>N°S:{{ pizarra.n_s }}</div>
+                    {% if pizarra.estado == 1 %}
+                        <div class='content'>Estado: Buen Estado</div>
+                    {% elif pizarra.estado == 2 %}
+                        <div class='content'>Estado: En espera de Servicio Tecnico</div>
+                    {% else %}
+                        <div class='content'>Estado: Roto</div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="panel-header">Pizarra</div>
+                <div class="panel-body">
+                    <div class='content'>No se encuentra una pizarra registrada</div>
+                    <div class="content">¿Desea ingresar un pizarra a este ADM?</div>
+                    <div class="content"><a class="actualizarbtn" href="{% url 'dispositivos:alta_dispositivo' adm_id.id '7' %}">Añadir Pizarra</a></div>
+                </div>
+                </div>
+            {% endif %}
+            </div>
 
             <a class="actualizarbtn" style='margin: 60px 30px' href="{% url 'dispositivos:alta_netbook' adm_id.id %}">Añadir Netbook</a>
 

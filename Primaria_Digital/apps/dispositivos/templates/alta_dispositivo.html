@@ -12,7 +12,11 @@
     {% elif n_tipo == '2' %}
         <h2>Alta de Cañon</h2>        
     {% elif n_tipo == '3' %}
-        <h2>Alta de Impresora</h2>        
+        <h2>Alta de Impresora</h2> 
+    {% elif n_tipo == '6' %}
+        <h2>Alta de Monitor</h2> 
+    {% elif n_tipo == '7' %}
+        <h2>Alta de Pizarra</h2>        
     {% else %}
         <h2>Alta de Camara</h2>        
     {% endif %}
@@ -23,11 +27,14 @@
 
         <ul>
             {% for field in form %}
+
             {% if field.name == 'adm' %}
                 {{ field }}
             {% elif field.name == 'tipo' %}
                 {{ field }}
             {% elif field.name == 'n_m' %}
+                {{ field }}
+            {% elif field.name == 'estado' %}
                 {{ field }}
             {% else %}
                 <li>
