@@ -2,6 +2,12 @@
 
 {% load static from staticfiles %}
 
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.css" %} ">
+    
+{% endblock styles %}
+
 {% block title %}
     Alta de Accion
 {% endblock title %}
@@ -26,3 +32,15 @@
         </ul>
     </form>
 {% endblock content %}
+
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "js/jquery-ui.js" %}"></script>
+    <script type="text/javascript">
+        $("#id_fecha").datepicker({
+            changeMonth: true,
+            dateFormat: 'yy/mm/dd'
+        });
+    </script>
+{% endblock scripts %}

@@ -5,16 +5,17 @@
         
     {% endblock title %} </title>
 
+    
     {% load static from staticfiles %}
-
+    
+    {% block styles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/general.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/header.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/form.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/icomoon.css" %} ">
     <link href="https://fonts.googleapis.com/css?family=Averia+Libre" rel="stylesheet"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block styles %}
-        
+    
     {% endblock styles %}
 </head>
 

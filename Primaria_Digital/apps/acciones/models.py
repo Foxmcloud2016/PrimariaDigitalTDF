@@ -8,10 +8,10 @@ class Accion(models.Model):
     escuela = models.ForeignKey(Escuela)
     usuario = models.ForeignKey(User)
     accion = models.TextField()
+    observaciones = models.TextField(null=True,default=None)
     fecha = models.DateTimeField()
-    realizada = models.BooleanField(default=False)
-    comentarios = models.TextField(null=True,default=None)
-
+    realizada = models.BooleanField(default=True)
+    programada = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Accion"

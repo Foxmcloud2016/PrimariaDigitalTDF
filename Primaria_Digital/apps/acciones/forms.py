@@ -19,5 +19,4 @@ class AccionForm(forms.ModelForm):
 
     def clean(self,**kwargs):
         data = super(AccionForm,self).clean(**kwargs)
-        print(data['fecha'])
         return data

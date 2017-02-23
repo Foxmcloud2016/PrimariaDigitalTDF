@@ -164,8 +164,8 @@
                 <thead class="table-header">
                     <tr>
                         <th class="row-id" style="padding:5px">#</th>
-                        <th>Modelo</th>
                         <th>Marca</th>
+                        <th>Modelo</th>
                         <th>N° de serie</th>
                         <th>Estado</th>
                         <th>Opciones</th>
@@ -176,8 +176,8 @@
                         {% for netbook in netbooks %}
                         <tr>
                         <td class="row-id" style="padding:5px">{{ netbook.n_m }}</td>
-                        <td>{{ netbook.modelo }}</td>
                         <td>{{ netbook.marca }}</td>
+                        <td>{{ netbook.modelo }}</td>
                         <td>{{ netbook.n_s }}</td>
                         {% if netbook.estado == 1 %}
                             <td>Buen Estado</td>

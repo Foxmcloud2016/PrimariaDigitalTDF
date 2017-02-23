@@ -11,6 +11,8 @@
             <tr>
                 <th>Nombre</th>
                 <th>Cue</th>
+                <th>Directivo</th>
+                <th>Tel. Directivo</th>
                 <th>Domicilio</th>
                 <th>Telefono</th>
                 <th>Opciones</th>
@@ -21,6 +23,8 @@
             <tr>
                 <td>{{ escuela.nombre }}</td>
                 <td>{{ escuela.cue }}</td>
+                <td>{{ escuela.directivo }}</td>
+                <td>{{ escuela.tel_directivo }}</td>
                 <td>{{ escuela.domicilio }}</td>
                 <td>{{ escuela.telefono }}</td>
                 <td style="text-align: center"><a class='actualizarbtn' href="{% url 'escuelas:modificar' escuela.id %} ">Editar</a></td>
